@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -44,10 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //获取到插件与原生的交互通道
   static const toAndroidPlugin =
-  const MethodChannel('com.litngzhe.toandroid/plugin');
+      const MethodChannel('com.johnson.toandroid/plugin');
 
   static const fromAndroiPlugin =
-  const EventChannel('com.litngzhe.toflutter/plugin');
+      const EventChannel('com.johnson.toflutter/plugin');
 
   StreamSubscription _fromAndroiSub;
 
@@ -117,35 +118,35 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
           child: new ListView(
-            children: <Widget>[
-              new Padding(
-                padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-                child: new RaisedButton(
-                    textColor: Colors.black,
-                    child: new Text('跳转到原生界面'),
-                    onPressed: () {
-                      _jumpToNative();
-                    }),
-              ),
-              new Padding(
-                padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-                child: new RaisedButton(
-                    textColor: Colors.black,
-                    child: new Text('跳转到原生界面(带参数)'),
-                    onPressed: () {
-                      _jumpToNativeWithParams();
-                    }),
-              ),
-              new Padding(
-                padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-                child: new Text('这是一个从原生获取的参数：$_nativeParams'),
-              ),
-              new Padding(
-                padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-                child: new Text('Flutter floatingActionButton 点击次数$_counter'),
-              )
-            ],
-          )),
+        children: <Widget>[
+          new Padding(
+            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+            child: new RaisedButton(
+                textColor: Colors.black,
+                child: new Text('跳转到原生界面'),
+                onPressed: () {
+                  _jumpToNative();
+                }),
+          ),
+          new Padding(
+            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+            child: new RaisedButton(
+                textColor: Colors.black,
+                child: new Text('跳转到原生界面(带参数)'),
+                onPressed: () {
+                  _jumpToNativeWithParams();
+                }),
+          ),
+          new Padding(
+            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+            child: new Text('这是一个从原生获取的参数：$_nativeParams'),
+          ),
+          new Padding(
+            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+            child: new Text('Flutter floatingActionButton 点击次数$_counter'),
+          )
+        ],
+      )),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
